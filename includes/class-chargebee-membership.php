@@ -65,7 +65,7 @@ if ( ! class_exists( 'Chargebee_Membership' ) ) {
 		 * @access   protected
 		 * @var      Chargebee_Membership_Login    $shortcode    login request handle
 		 */
-		protected $cbm_login;
+		//protected $cbm_login;
 
 		/**
 		 * Class instance to Add Extra fields and save its data.
@@ -210,7 +210,7 @@ if ( ! class_exists( 'Chargebee_Membership' ) ) {
 			/**
 			 * Initialize Product Class
 			 */
-			$this->products = new Chargebee_Membership_Products();
+			//$this->products = new Chargebee_Membership_Products();
 
 			/**
 			 * Initialize Shortcode Class
@@ -220,7 +220,7 @@ if ( ! class_exists( 'Chargebee_Membership' ) ) {
 			/**
 			 * Initialize Login Class
 			 */
-			$this->cbm_login = new Chargebee_Membership_Login();
+			//$this->cbm_login = new Chargebee_Membership_Login();
 
 			/**
 			 * Initialize Customer Extra Fields Class.
@@ -236,6 +236,11 @@ if ( ! class_exists( 'Chargebee_Membership' ) ) {
 			 * Initialize webhook handler class.
 			 */
 			$this->webhook = new Chargebee_Membership_Webhook();
+
+			/**
+			 * The class responsible for hosted page.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-chargebee-membership-hosted-page.php';
 		}
 
 		/**
@@ -306,9 +311,9 @@ if ( ! class_exists( 'Chargebee_Membership' ) ) {
 		 */
 		public function run() {
 			$this->loader->run();
-			$this->products->run();
+			//$this->products->run();
 			$this->shortcodes->run();
-			$this->cbm_login->run();
+			//$this->cbm_login->run();
 			$this->customer_extra_fields->run();
 		}
 

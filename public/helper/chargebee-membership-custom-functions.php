@@ -287,8 +287,8 @@ if ( ! function_exists( 'cbm_reactivate_product_callback' ) ) {
 			wp_send_json_error( array( 'error' => 'not_logged_in', 'url' => $url ) );
 		}// End if().
 	}
-	add_filter( 'wp_ajax_cbm_reactivate_product', 'cbm_reactivate_product_callback' );
-	add_filter( 'wp_ajax_nopriv_cbm_reactivate_product', 'cbm_reactivate_product_callback' );
+	//add_filter( 'wp_ajax_cbm_reactivate_product', 'cbm_reactivate_product_callback' );
+	//add_filter( 'wp_ajax_nopriv_cbm_reactivate_product', 'cbm_reactivate_product_callback' );
 }// End if().
 
 /**
@@ -387,33 +387,34 @@ if ( ! function_exists( 'cbm_edit_product' ) ) {
  * @return false|string
  */
 function get_cbm_page_link( $page ) {
-	$options = get_option( 'cbm_pages' );
-	$url     = '';
-	switch ( $page ) {
-		case 'login' :
-			if ( ! empty( $options['cbm_login_page'] ) ) {
-				$url = get_permalink( $options['cbm_login_page'] );
-			} else {
-				$url = wp_login_url();
-			}
-			break;
-		case 'registration' :
-			if ( ! empty( $options['cbm_registration_page'] ) ) {
-				$url = get_permalink( $options['cbm_registration_page'] );
-			}
-			break;
-		case 'pricing' :
-			if ( ! empty( $options['cbm_product_page'] ) ) {
-				$url = get_permalink( $options['cbm_product_page'] );
-			}
-			break;
-		case 'thank_you' :
-			if ( ! empty( $options['cbm_thankyou_page'] ) ) {
-				$url = get_permalink( $options['cbm_thankyou_page'] );
-			}
-			break;
-
-	}
+//	$options = get_option( 'cbm_pages' );
+//	$url     = '';
+//	switch ( $page ) {
+//		case 'login' :
+//			//if ( ! empty( $options['cbm_login_page'] ) ) {
+//			//	$url = get_permalink( $options['cbm_login_page'] );
+//			//} else {
+//				$url = wp_login_url();
+//			//}
+//			break;
+//		case 'registration' :
+//			if ( ! empty( $options['cbm_registration_page'] ) ) {
+//				$url = get_permalink( $options['cbm_registration_page'] );
+//			}
+//			break;
+//		case 'pricing' :
+//			if ( ! empty( $options['cbm_product_page'] ) ) {
+//				$url = get_permalink( $options['cbm_product_page'] );
+//			}
+//			break;
+//		case 'thank_you' :
+//			if ( ! empty( $options['cbm_thankyou_page'] ) ) {
+//				$url = get_permalink( $options['cbm_thankyou_page'] );
+//			}
+//			break;
+//
+//	}
+        $url = wp_login_url();
 	return $url;
 }
 

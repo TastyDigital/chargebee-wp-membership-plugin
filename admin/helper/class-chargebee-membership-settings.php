@@ -78,28 +78,28 @@ if ( ! class_exists( 'Chargebee_Membership_Settings' ) ) {
 			);
 
 			// Chargebee Webhook Url.
-			add_settings_field( 'cbm_web_hook_url',                           // ID used to identify the field
-				__( 'Webhook URL', 'chargebee-membership' ),       // The label to the left of the option interface element
-				array( $this, 'integration_chargebee_webhook_url_callback' ), // The name of the function responsible for rendering the option interface
-				'integration',                                           // The page on which this option will be displayed
-				'cbm_integration'                                        // The name of the section to which this field belongs.
-			);
+//			add_settings_field( 'cbm_web_hook_url',                           // ID used to identify the field
+//				__( 'Webhook URL', 'chargebee-membership' ),       // The label to the left of the option interface element
+//				array( $this, 'integration_chargebee_webhook_url_callback' ), // The name of the function responsible for rendering the option interface
+//				'integration',                                           // The page on which this option will be displayed
+//				'cbm_integration'                                        // The name of the section to which this field belongs.
+//			);
                         
 			// Chargebee Auth Username & Password field.
-			add_settings_field( 'cbm_webhook_username',                           // ID used to identify the field
-				__( 'Username', 'chargebee-membership' ),       // The label to the left of the option interface element
-				array( $this, 'integration_chargebee_username_callback' ), // The name of the function responsible for rendering the option interface
-				'integration',                                           // The page on which this option will be displayed
-				'cbm_integration'                                        // The name of the section to which this field belongs.
-			);
+//			add_settings_field( 'cbm_webhook_username',                           // ID used to identify the field
+//				__( 'Username', 'chargebee-membership' ),       // The label to the left of the option interface element
+//				array( $this, 'integration_chargebee_username_callback' ), // The name of the function responsible for rendering the option interface
+//				'integration',                                           // The page on which this option will be displayed
+//				'cbm_integration'                                        // The name of the section to which this field belongs.
+//			);
                                                 
 			// Chargebee Auth Username & Password field.
-			add_settings_field( 'cbm_webhook_password',                           // ID used to identify the field
-				__( 'Password', 'chargebee-membership' ),       // The label to the left of the option interface element
-				array( $this, 'integration_chargebee_password_callback' ), // The name of the function responsible for rendering the option interface
-				'integration',                                           // The page on which this option will be displayed
-				'cbm_integration'                                        // The name of the section to which this field belongs.
-			);
+//			add_settings_field( 'cbm_webhook_password',                           // ID used to identify the field
+//				__( 'Password', 'chargebee-membership' ),       // The label to the left of the option interface element
+//				array( $this, 'integration_chargebee_password_callback' ), // The name of the function responsible for rendering the option interface
+//				'integration',                                           // The page on which this option will be displayed
+//				'cbm_integration'                                        // The name of the section to which this field belongs.
+//			);
 
 			// Register settings for Integration.
 			register_setting( 'integration', 'cbm_site_name' );
@@ -114,7 +114,7 @@ if ( ! class_exists( 'Chargebee_Membership_Settings' ) ) {
 		 */
 		public function add_page_options() {
 			// Pages Settings section for reserved pages.
-			add_settings_section( 'cbm_reserved_pages', __( 'Reserved Pages', 'chargebee-membership' ), array( $this, 'reserved_pages_options_callback' ), 'cbm_pages' );
+			//add_settings_section( 'cbm_reserved_pages', __( 'Reserved Pages', 'chargebee-membership' ), array( $this, 'reserved_pages_options_callback' ), 'cbm_pages' );
 
 			// Login page option.
 			add_settings_field( 'cbm_login_page', __( 'Chargebee Login Page', 'chargebee-membership' ), array( $this, 'login_page_callback' ), 'cbm_pages', 'cbm_reserved_pages' );
@@ -151,13 +151,13 @@ if ( ! class_exists( 'Chargebee_Membership_Settings' ) ) {
 			add_settings_field( 'cbm_dashboard_access', __( 'Dashboard', 'chargebee-membership' ), array( $this, 'dashboard_access_callback' ), 'cbm_account', 'cbm_account_permissions' );
 
 			// Login Logout option section.
-			add_settings_section( 'cbm_login_logout', __( 'Login & Logout', 'chargebee-membership' ), array( $this, 'account_login_logout_callback' ), 'cbm_account' );
+			//add_settings_section( 'cbm_login_logout', __( 'Login & Logout', 'chargebee-membership' ), array( $this, 'account_login_logout_callback' ), 'cbm_account' );
 
 			// Use chargebee login or not.
-			add_settings_field( 'cbm_use_cb_login', __( 'Chargebee Login Page', 'chargebee-membership' ), array( $this, 'use_login_page_callback' ), 'cbm_account', 'cbm_login_logout' );
+			//add_settings_field( 'cbm_use_cb_login', __( 'Chargebee Login Page', 'chargebee-membership' ), array( $this, 'use_login_page_callback' ), 'cbm_account', 'cbm_login_logout' );
 
 			// Login page redirect.
-			add_settings_field( 'cbm_login_redirect', __( 'URL to redirect after Login', 'chargebee-membership' ), array( $this, 'login_redirect_callback' ), 'cbm_account', 'cbm_login_logout' );
+			//add_settings_field( 'cbm_login_redirect', __( 'URL to redirect after Login', 'chargebee-membership' ), array( $this, 'login_redirect_callback' ), 'cbm_account', 'cbm_login_logout' );
 
 			// Logout page redirect.
 //			add_settings_field( 'cbm_logout_redirect', __( 'URL to redirect after Logout', 'chargebee-membership' ), array( $this, 'logout_redirect_callback' ), 'cbm_account', 'cbm_login_logout' );
@@ -526,7 +526,7 @@ if ( ! class_exists( 'Chargebee_Membership_Settings' ) ) {
 			} else {
 				?>
 				<select name="cbm_general[cbm_default_level]" id="cbm_default_level">
-					<option value="default"><?php echo esc_html__( 'Select Level', 'chargebee-membership' ); ?></option>
+					<option value="0"><?php echo esc_html__( 'Select Level', 'chargebee-membership' ); ?></option>
 					<?php
 					foreach ( $product_obj as $product ) {
 						$product_id   = ! empty( $product['product_id'] ) ? $product['product_id'] : '';

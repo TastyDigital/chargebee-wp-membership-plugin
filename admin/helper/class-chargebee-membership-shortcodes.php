@@ -27,23 +27,23 @@ if ( ! class_exists( 'Chargebee_Membership_Product_Shortcodes' ) ) {
 		 */
 		public function run() {
 			// Create shortcode for Login Form.
-			add_shortcode( 'cb_login_form', array( $this, 'render_login_form' ) );
+			//add_shortcode( 'cb_login_form', array( $this, 'render_login_form' ) );
 
 			// Create shortcode for Registration form.
-			add_shortcode( 'cb_registration_form', array( $this, 'render_registration_form' ) );
+			//add_shortcode( 'cb_registration_form', array( $this, 'render_registration_form' ) );
 
 			// Ajax call to validate and create user account.
 			add_action( 'wp_ajax_cbm_validate_registration_data', array( $this, 'cbm_validate_registration_data' ) );
 			add_action( 'wp_ajax_nopriv_cbm_validate_registration_data', array( $this, 'cbm_validate_registration_data' ) );
 
 			// Create shortcode for account link.
-			add_shortcode( 'cb_account_link', array( $this, 'render_account_link' ) );
+			//add_shortcode( 'cb_account_link', array( $this, 'render_account_link' ) );
 
 			// Create shortcode for update payment method form.
-			add_shortcode( 'cb_update_payment_method_form', array( $this, 'render_update_payment_method_form' ) );
+			//add_shortcode( 'cb_update_payment_method_form', array( $this, 'render_update_payment_method_form' ) );
 
 			// Create shortcode for update payment method form.
-			add_shortcode( 'cb_login_logout_link', array( $this, 'render_login_logout_link' ) );
+			//add_shortcode( 'cb_login_logout_link', array( $this, 'render_login_logout_link' ) );
 
 			// Create shortcode to display subscriptions of customer.
 			add_shortcode( 'cb_display_subscription', array( $this, 'render_display_subscription' ) );
@@ -62,7 +62,7 @@ if ( ! class_exists( 'Chargebee_Membership_Product_Shortcodes' ) ) {
 
 			// Shortcode for restrict a portion of content for given level id in this shortcode.
 			add_shortcode( 'cb_content_hide', array( $this, 'render_content_show_hide' ) );
-                        add_shortcode('cb_product_subscribe',array($this,'product_subscribe'));
+                        //add_shortcode('cb_product_subscribe',array($this,'product_subscribe'));
 		}
 
 

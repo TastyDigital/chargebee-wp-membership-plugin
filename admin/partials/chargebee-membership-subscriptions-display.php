@@ -38,7 +38,7 @@ if ( ! empty( $subscriptions ) ) {
 					$product_page_url        = get_cbm_page_link( 'pricing' );
 					$product_single_page_url = $product_page_url . $plan_id;
 					$product_reactivate_url  = $product_single_page_url . '?subscription_id=' . esc_attr( $subscription_id );
-					echo '<br/><a class="cbm-reactivate-subscription" href="' . esc_attr( $product_reactivate_url ) . '" title="' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '">' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '</a>';
+					//echo '<br/><a class="cbm-reactivate-subscription" href="' . esc_attr( $product_reactivate_url ) . '" title="' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '">' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '</a>';
 				}
 					?>
 				</td>

@@ -22,7 +22,7 @@
 	<!-- Tabs for Settings -->
 	 <h2 class="nav-tab-wrapper">
 	    <a href="?page=chargebee-membership-settings&tab=integration" class="nav-tab <?php echo ( 'integration' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Integration', 'chargebee-membership' ); ?></a>
-	    <a href="?page=chargebee-membership-settings&tab=pages" class="nav-tab <?php echo ( 'pages' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Pages', 'chargebee-membership' ); ?></a>
+<!--	    <a href="?page=chargebee-membership-settings&tab=pages" class="nav-tab <?php echo ( 'pages' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Pages', 'chargebee-membership' ); ?></a>-->
 	    <a href="?page=chargebee-membership-settings&tab=account" class="nav-tab <?php echo ( 'account' === $active_tab ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Account', 'chargebee-membership' ); ?></a>
 		<!-- Phase2 -->
 	    <!--<a href="?page=chargebee-membership-settings&tab=fields" class="nav-tab <?php // echo $active_tab == 'fields' ? 'nav-tab-active' : '';. ?>"><?php // _e( 'Fields', 'chargebee-membership' );. ?></a>-->
@@ -40,6 +40,61 @@
 				settings_fields( 'integration' );
 				do_settings_sections( 'integration' );
 				submit_button( __( 'Save API Key & Synchronize', 'chargebee-membership' ), 'primary', 'cbm_api_key_save',false );
+                                
+                                
+                                ?>
+                                <div style="border:2px dotted #d1d1d1;padding:10px; margin:10px auto;">
+                                    <h2>Webhook Information</h2>
+                                    <small><i>Use the below Webhook information to subscribe for Webhook events from Chargebee.</i></small>
+                                 <table class="form-table">
+                                    <tbody>
+                                <tr>
+                                        <th scope="row">Webhook URL</th>
+                                            <td>
+                                <?php
+                                //webhook url
+                                $domain_name = get_site_url();
+                                $webhook_url = $domain_name . '/wp-json/cbm/v2/webhook';
+                                echo '<p>';
+                                        echo esc_html( $webhook_url );
+                                echo '</p>';
+                                ?>
+                                            </td>
+                                    </tr>
+                               
+                                        <tr>
+                                            <th scope="row">Username</th>
+                                            <td>
+                                    <?php
+                                //username
+                                $chargebee_webhook_username="cb_wp_membership";
+                                echo esc_html( $chargebee_webhook_username );
+                                ?>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <th scope="row">Password</th>
+                                            <td>
+                                    <?php
+                                //password
+                                $cbm_options = get_option( 'cbm_site_settings' );
+                                if(!isset($cbm_options["webhook_password"])){
+                                        $CB_SALT=uniqid(mt_rand(), true);
+                                        $CB_PLUGIN_DOMAIN=get_site_url();
+                                        $CB_AUTH_PASSWD=sha1($CB_SALT.$CB_PLUGIN_DOMAIN);
+                                        $cbm_options = array('webhook_password'=>"$CB_AUTH_PASSWD");
+                                        add_option("cbm_site_settings",$cbm_options);
+                                }
+                                echo esc_html( $cbm_options["webhook_password"] );
+                                
+                                ?></td>
+                                    </tr>
+                                    
+                                    </tbody>
+                                </table>
+                                </div>
+                                    <?php
+                                
 				break;
 
 			default:

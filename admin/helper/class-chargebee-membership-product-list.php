@@ -140,8 +140,8 @@ if ( ! class_exists( 'Chargebee_Membership_Product_List' ) ) {
 			$edit_link = admin_url() . 'admin.php?page=' . $requested_page . '&action=edit&product=' . $product_id;
 
 			$actions = array(
-				'Edit' => sprintf( '<a href="%s">Edit</a>', esc_url( $edit_link ) ),
-				'View' => sprintf( '<a href="%s">View</a>', esc_url( $view_link ) ),
+				'Edit' => sprintf( '<a href="%s">Edit</a>', esc_url( $edit_link ) )
+				
 			);
 
 			return $title . $this->row_actions( $actions );

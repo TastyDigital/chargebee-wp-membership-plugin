@@ -197,8 +197,10 @@ if ( ! class_exists( 'Chargebee_Membership_Webhook' ) ) {
 								'trial_end'       => ! empty( $subscription['trial_end'] ) ? date( 'd/m/Y', $subscription['trial_end'] ) : '',
 							);
 						}
+                                                
 						if ( ! empty( $updated_subscriptions ) ) {
-							update_user_meta( $wp_user_id, 'chargebee_user_subscriptions', $updated_subscriptions, $subscription_id );
+							update_user_meta( $wp_user_id, 'chargebee_user_subscriptions', $updated_subscriptions );
+                                                        
 						}
 						/* translators: %s: chargebee_plan_id */
 						$notification_msg = sprintf( esc_html__( 'You have subscribe to %s plan.', 'chargebee-membership' ), $plan_id );
@@ -246,7 +248,7 @@ if ( ! class_exists( 'Chargebee_Membership_Webhook' ) ) {
 						$reactivate_subscription = '<a class="cbm-reactivate-subscription" href="' . esc_attr( $product_reactivate_url ) . '" title="' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '">' . esc_html__( 'Reactivate', 'chargebee-membership' ) . '</a>';
 						/* translators: %s: chargebee_plan_id */
 						$notification_msg = sprintf( esc_html__( 'Your subscription for %s plan is cancelled.', 'chargebee-membership' ), $plan_id );
-						$notification_msg .= $reactivate_subscription;
+						//$notification_msg .= $reactivate_subscription;
 					} elseif ( 'subscription_changed' === $event ) {
 						/* translators: %s: chargebee_plan_id */
 						$notification_msg = sprintf( esc_html__( 'Your subscription to %s plan is updated.', 'chargebee-membership' ), $plan_id );
@@ -413,7 +415,7 @@ if ( ! class_exists( 'Chargebee_Membership_Webhook' ) ) {
 			switch ( $event ) {
 				case 'payment_failed':
 					$notification_msg = esc_html__( 'Your last payment is failed due payment method issue, Please check and update your payment method.', 'chargebee-membership' );
-					$notification_msg .= esc_html( '[cb_update_payment_method_form]' );
+					//$notification_msg .= esc_html( '[cb_update_payment_method_form]' );
 					if ( ! empty( $notification_msg ) ) {
 						$inserted_notification = $this->user_notification->insert_notification( $wp_user_id, $notification_msg );
 						if ( false === $inserted_notification ) {

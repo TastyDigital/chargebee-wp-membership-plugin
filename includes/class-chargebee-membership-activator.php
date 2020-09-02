@@ -38,7 +38,7 @@ if ( ! class_exists( 'Chargebee_Membership_Activator' ) ) {
 
 			// Add New User Role for Chargebee Member.
 			$wp_roles->add_role( 'chargebee_member', __( 'Chargebee Member', 'chargebee-membership' ), $subscriber->capabilities );
-			self::reserved_pages();
+			//self::reserved_pages();
 			self::create_custom_tables();
 			self::default_options();
 		}
@@ -218,17 +218,17 @@ if ( ! class_exists( 'Chargebee_Membership_Activator' ) ) {
 
 			if ( empty( $permissions['cbm_adminbar_display'] ) || empty( $permissions['cbm_dashboard_access'] ) || empty( $permissions['cbm_logout_redirect'] ) ) {
 
-				$pages = get_option( 'cbm_pages' );
+				//$pages = get_option( 'cbm_pages' );
 
 				// set logout redirect url.
-				if ( ! empty( $pages['cbm_login_page'] ) ) {
-					$logout_url = basename( get_permalink( $pages['cbm_login_page'] ) );
-				}
+//				if ( ! empty( $pages['cbm_login_page'] ) ) {
+//					$logout_url = basename( get_permalink( $pages['cbm_login_page'] ) );
+//				}
 
 				$arr = array(
 					'cbm_adminbar_display' => ! empty( $permissions['cbm_adminbar_display'] ) ? $permissions['cbm_adminbar_display'] : '1',
 					'cbm_dashboard_access' => ! empty( $permissions['cbm_dashboard_access'] ) ? $permissions['cbm_dashboard_access'] : '1',
-					'cbm_logout_redirect'  => ! empty( $permissions['cbm_logout_redirect'] ) ? $permissions['cbm_logout_redirect'] : $logout_url,
+					'cbm_logout_redirect'  => ! empty( $permissions['cbm_logout_redirect'] ) ? $permissions['cbm_logout_redirect'] : '',
 				);
 				update_option( 'cbm_account', $arr );
 			}

@@ -12,10 +12,10 @@
  * @package           Chargebee_Membership
  *
  * @wordpress-plugin
- * Plugin Name:       Chargebee Membership
+ * Plugin Name:       Chargebee Membership - Closed Beta
  * Plugin URI:        https://www.chargebee.com
- * Description:       Chargebee Membership Plugin
- * Version:           0.0.6
+ * Description:       Chargebee Membership Plugin - This plugin is not for everyone. Its in closed beta stage. Plugin only support HP v3 portal.
+ * Version:           0.0.7c
  * Requires at least: 4.5.0
  * Author:            rtCamp
  * Author URI:        https://rtcamp.com/
